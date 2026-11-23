@@ -1,6 +1,17 @@
 const lib = require('../../lib');
 const config = require('../../front/config');
 
+describe('formatArticleSlug', () => {
+  test('should lowercase and join trimmed words with hyphens', () => {
+    expect(lib.formatArticleSlug('  Hello   World From HCMUS  ')).toBe('hello-world-from-hcmus');
+  });
+
+  test('should return an empty slug for empty or null input', () => {
+    expect(lib.formatArticleSlug('')).toBe('');
+    expect(lib.formatArticleSlug(null)).toBe('');
+  });
+});
+
 describe('Unit Tests: Helpers & Utilities (lib.js)', () => {
   describe('validatePositiveInteger', () => {
     test('1. should return true and parsed integer for positive integer number', () => {
